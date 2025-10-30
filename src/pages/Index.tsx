@@ -440,9 +440,9 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-12">
-            <Button size="lg" className="bg-purple-600 hover:bg-purple-700">
+            <Button size="lg" variant="outline">
               <Icon name="Tv" className="mr-2" size={20} />
-              Смотреть на Twitch
+              Смотреть все
             </Button>
           </div>
         </div>
