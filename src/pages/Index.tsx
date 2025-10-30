@@ -325,9 +325,7 @@ const Index = () => {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold mb-2">Подай заявку</h3>
-                    <p className="text-muted-foreground">
-                      В Discord найди канал #анкеты и заполни форму. Расскажи о себе и своём канале.
-                    </p>
+                    <p className="text-muted-foreground">Для попадания на сервер вы должны подать видео заявку. Подробнее вы можете узнать в нашем ДС в канале #проходка</p>
                   </div>
                 </div>
               </CardContent>
