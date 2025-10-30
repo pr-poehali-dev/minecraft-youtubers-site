@@ -65,6 +65,30 @@ const Index = () => {
     }
   ];
 
+  const streams = [
+    {
+      title: "Стрим: Покоряем Незер",
+      creator: "StreamerPro",
+      viewers: "2.3K",
+      isLive: true,
+      thumbnail: "https://cdn.poehali.dev/projects/05ab7f02-7c2a-472e-9cec-780dc9fd331d/files/d27350ce-89ec-4b89-a54e-8fba3b916f59.jpg"
+    },
+    {
+      title: "Стрим: Мини-игры с подписчиками",
+      creator: "PvPKing",
+      viewers: "1.8K",
+      isLive: true,
+      thumbnail: "https://cdn.poehali.dev/projects/05ab7f02-7c2a-472e-9cec-780dc9fd331d/files/d27350ce-89ec-4b89-a54e-8fba3b916f59.jpg"
+    },
+    {
+      title: "Стрим: Автоматические фермы",
+      creator: "RedstoneGuru",
+      viewers: "3.1K",
+      isLive: false,
+      thumbnail: "https://cdn.poehali.dev/projects/05ab7f02-7c2a-472e-9cec-780dc9fd331d/files/d27350ce-89ec-4b89-a54e-8fba3b916f59.jpg"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
@@ -100,6 +124,12 @@ const Index = () => {
               className={`transition-colors ${activeSection === "videos" ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
             >
               Видео
+            </button>
+            <button 
+              onClick={() => scrollToSection("streams")}
+              className={`transition-colors ${activeSection === "streams" ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
+            >
+              Стримы
             </button>
           </div>
 
@@ -324,10 +354,10 @@ const Index = () => {
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-primary">Видео</span> и стримы
+              <span className="text-primary">Видео</span> с сервера
             </h2>
             <p className="text-muted-foreground text-lg">
-              Лучшие моменты с нашего сервера
+              Лучшие ролики и подборки
             </p>
           </div>
 
@@ -369,6 +399,68 @@ const Index = () => {
             <Button size="lg" variant="outline">
               <Icon name="Youtube" className="mr-2" size={20} />
               Смотреть все видео
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <section id="streams" className="py-20 px-4">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              <span className="text-primary">Стримы</span> наших участников
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Следи за трансляциями в реальном времени
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {streams.map((stream, index) => (
+              <Card 
+                key={index}
+                className="group hover:border-primary transition-all duration-300 hover:scale-105 cursor-pointer bg-card/80 backdrop-blur overflow-hidden"
+              >
+                <div className="relative overflow-hidden">
+                  <img 
+                    src={stream.thumbnail}
+                    alt={stream.title}
+                    className="w-full aspect-video object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  {stream.isLive && (
+                    <Badge className="absolute top-2 left-2 bg-red-600 animate-pulse">
+                      <span className="flex items-center gap-1">
+                        <span className="w-2 h-2 bg-white rounded-full"></span>
+                        LIVE
+                      </span>
+                    </Badge>
+                  )}
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Icon name="Play" size={28} />
+                    </div>
+                  </div>
+                </div>
+                <CardContent className="pt-4">
+                  <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
+                    {stream.title}
+                  </h3>
+                  <div className="flex items-center justify-between text-sm text-muted-foreground">
+                    <span>{stream.creator}</span>
+                    <div className="flex items-center gap-1">
+                      <Icon name="Users" size={14} />
+                      <span>{stream.viewers}</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Button size="lg" className="bg-purple-600 hover:bg-purple-700">
+              <Icon name="Tv" className="mr-2" size={20} />
+              Смотреть на Twitch
             </Button>
           </div>
         </div>
