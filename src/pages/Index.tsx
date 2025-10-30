@@ -324,7 +324,7 @@ const Index = () => {
                     <span className="text-xl font-bold">2</span>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">Заполни анкету</h3>
+                    <h3 className="text-xl font-bold mb-2">Подай заявку</h3>
                     <p className="text-muted-foreground">
                       В Discord найди канал #анкеты и заполни форму. Расскажи о себе и своём канале.
                     </p>
