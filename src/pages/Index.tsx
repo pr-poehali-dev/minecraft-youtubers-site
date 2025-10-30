@@ -432,7 +432,7 @@ const Index = () => {
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-primary">Стримы</span> наших участников
+              <span className="text-primary">Стримы</span> участников
             </h2>
             <p className="text-muted-foreground text-lg">
               Следи за трансляциями в реальном времени
