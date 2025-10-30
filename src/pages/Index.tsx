@@ -389,11 +389,11 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="relative max-w-6xl mx-auto">
+          <div className="relative max-w-7xl mx-auto px-16">
             <Button
               variant="outline"
               size="icon"
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur"
+              className="absolute -left-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur"
               onClick={() => scrollVideos('left')}
             >
               <Icon name="ChevronLeft" size={24} />
@@ -401,7 +401,7 @@ const Index = () => {
             
             <div 
               ref={videosScrollRef}
-              className="flex gap-6 overflow-x-auto scroll-smooth hide-scrollbar px-12"
+              className="flex gap-6 overflow-x-auto scroll-smooth hide-scrollbar"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
               {videos.map((video, index) => (
@@ -440,7 +440,7 @@ const Index = () => {
             <Button
               variant="outline"
               size="icon"
-              className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur"
+              className="absolute -right-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur"
               onClick={() => scrollVideos('right')}
             >
               <Icon name="ChevronRight" size={24} />
