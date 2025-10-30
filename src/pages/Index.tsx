@@ -6,6 +6,8 @@ import Icon from "@/components/ui/icon";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
+  const [showAllVideos, setShowAllVideos] = useState(false);
+  const [showAllStreams, setShowAllStreams] = useState(false);
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
@@ -44,7 +46,7 @@ const Index = () => {
     }
   ];
 
-  const videos = [
+  const allVideos = [
     {
       title: "Эпичный рейд на Край",
       creator: "StreamerPro",
@@ -62,10 +64,30 @@ const Index = () => {
       creator: "PvPKing",
       views: "58K",
       thumbnail: "https://cdn.poehali.dev/projects/05ab7f02-7c2a-472e-9cec-780dc9fd331d/files/d27350ce-89ec-4b89-a54e-8fba3b916f59.jpg"
+    },
+    {
+      title: "Исследуем океанский монумент",
+      creator: "StreamerPro",
+      views: "28K",
+      thumbnail: "https://cdn.poehali.dev/projects/05ab7f02-7c2a-472e-9cec-780dc9fd331d/files/d27350ce-89ec-4b89-a54e-8fba3b916f59.jpg"
+    },
+    {
+      title: "Создаём город будущего",
+      creator: "BuildMaster",
+      views: "41K",
+      thumbnail: "https://cdn.poehali.dev/projects/05ab7f02-7c2a-472e-9cec-780dc9fd331d/files/d27350ce-89ec-4b89-a54e-8fba3b916f59.jpg"
+    },
+    {
+      title: "Битва за сокровища",
+      creator: "PvPKing",
+      views: "62K",
+      thumbnail: "https://cdn.poehali.dev/projects/05ab7f02-7c2a-472e-9cec-780dc9fd331d/files/d27350ce-89ec-4b89-a54e-8fba3b916f59.jpg"
     }
   ];
 
-  const streams = [
+  const videos = showAllVideos ? allVideos : allVideos.slice(0, 3);
+
+  const allStreams = [
     {
       title: "Стрим: Покоряем Незер",
       creator: "StreamerPro",
@@ -86,8 +108,31 @@ const Index = () => {
       viewers: "3.1K",
       isLive: false,
       thumbnail: "https://cdn.poehali.dev/projects/05ab7f02-7c2a-472e-9cec-780dc9fd331d/files/d27350ce-89ec-4b89-a54e-8fba3b916f59.jpg"
+    },
+    {
+      title: "Стрим: Хардкор выживание",
+      creator: "StreamerPro",
+      viewers: "4.2K",
+      isLive: false,
+      thumbnail: "https://cdn.poehali.dev/projects/05ab7f02-7c2a-472e-9cec-780dc9fd331d/files/d27350ce-89ec-4b89-a54e-8fba3b916f59.jpg"
+    },
+    {
+      title: "Стрим: Постройка замка",
+      creator: "BuildMaster",
+      viewers: "2.7K",
+      isLive: false,
+      thumbnail: "https://cdn.poehali.dev/projects/05ab7f02-7c2a-472e-9cec-780dc9fd331d/files/d27350ce-89ec-4b89-a54e-8fba3b916f59.jpg"
+    },
+    {
+      title: "Стрим: Скайблок челлендж",
+      creator: "PvPKing",
+      viewers: "5.1K",
+      isLive: true,
+      thumbnail: "https://cdn.poehali.dev/projects/05ab7f02-7c2a-472e-9cec-780dc9fd331d/files/d27350ce-89ec-4b89-a54e-8fba3b916f59.jpg"
     }
   ];
+
+  const streams = showAllStreams ? allStreams : allStreams.slice(0, 3);
 
   return (
     <div className="min-h-screen bg-background">
@@ -378,9 +423,13 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-12">
-            <Button size="lg" variant="outline">
+            <Button 
+              size="lg" 
+              variant="outline"
+              onClick={() => setShowAllVideos(!showAllVideos)}
+            >
               <Icon name="Youtube" className="mr-2" size={20} />
-              Смотреть все видео
+              {showAllVideos ? "Скрыть" : "Смотреть все видео"}
             </Button>
           </div>
         </div>
@@ -440,7 +489,14 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-12">
-            <Button size="lg" variant="outline">Смотреть все стримы</Button>
+            <Button 
+              size="lg" 
+              variant="outline"
+              onClick={() => setShowAllStreams(!showAllStreams)}
+            >
+              <Icon name="Tv" className="mr-2" size={20} />
+              {showAllStreams ? "Скрыть" : "Смотреть все"}
+            </Button>
           </div>
         </div>
       </section>
