@@ -440,7 +440,7 @@ const Index = () => {
             <Button
               variant="outline"
               size="icon"
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur"
+              className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur"
               onClick={() => scrollVideos('right')}
             >
               <Icon name="ChevronRight" size={24} />
