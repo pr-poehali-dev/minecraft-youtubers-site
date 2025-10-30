@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -6,8 +6,8 @@ import Icon from "@/components/ui/icon";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
-  const [showAllVideos, setShowAllVideos] = useState(false);
   const [showAllStreams, setShowAllStreams] = useState(false);
+  const videosScrollRef = useRef<HTMLDivElement>(null);
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
@@ -46,7 +46,7 @@ const Index = () => {
     }
   ];
 
-  const allVideos = [
+  const videos = [
     {
       title: "Эпичный рейд на Край",
       creator: "StreamerPro",
@@ -85,7 +85,15 @@ const Index = () => {
     }
   ];
 
-  const videos = showAllVideos ? allVideos : allVideos.slice(0, 3);
+  const scrollVideos = (direction: 'left' | 'right') => {
+    if (videosScrollRef.current) {
+      const scrollAmount = 400;
+      videosScrollRef.current.scrollBy({
+        left: direction === 'right' ? scrollAmount : -scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   const allStreams = [
     {
@@ -381,48 +389,61 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {videos.map((video, index) => (
-              <Card 
-                key={index}
-                className="group hover:border-primary transition-all duration-300 hover:scale-105 cursor-pointer bg-card/80 backdrop-blur overflow-hidden"
-              >
-                <div className="relative overflow-hidden">
-                  <img 
-                    src={video.thumbnail}
-                    alt={video.title}
-                    className="w-full aspect-video object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Icon name="Play" size={28} />
-                    </div>
-                  </div>
-                </div>
-                <CardContent className="pt-4">
-                  <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
-                    {video.title}
-                  </h3>
-                  <div className="flex items-center justify-between text-sm text-muted-foreground">
-                    <span>{video.creator}</span>
-                    <div className="flex items-center gap-1">
-                      <Icon name="Eye" size={14} />
-                      <span>{video.views}</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Button 
-              size="lg" 
+          <div className="relative max-w-6xl mx-auto">
+            <Button
               variant="outline"
-              onClick={() => setShowAllVideos(!showAllVideos)}
+              size="icon"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur"
+              onClick={() => scrollVideos('left')}
             >
-              <Icon name="Youtube" className="mr-2" size={20} />
-              {showAllVideos ? "Скрыть" : "Смотреть все видео"}
+              <Icon name="ChevronLeft" size={24} />
+            </Button>
+            
+            <div 
+              ref={videosScrollRef}
+              className="flex gap-6 overflow-x-auto scroll-smooth hide-scrollbar px-12"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {videos.map((video, index) => (
+                <Card 
+                  key={index}
+                  className="group hover:border-primary transition-all duration-300 hover:scale-105 cursor-pointer bg-card/80 backdrop-blur overflow-hidden flex-shrink-0 w-[350px]"
+                >
+                  <div className="relative overflow-hidden">
+                    <img 
+                      src={video.thumbnail}
+                      alt={video.title}
+                      className="w-full aspect-video object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Icon name="Play" size={28} />
+                      </div>
+                    </div>
+                  </div>
+                  <CardContent className="pt-4">
+                    <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
+                      {video.title}
+                    </h3>
+                    <div className="flex items-center justify-between text-sm text-muted-foreground">
+                      <span>{video.creator}</span>
+                      <div className="flex items-center gap-1">
+                        <Icon name="Eye" size={14} />
+                        <span>{video.views}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur"
+              onClick={() => scrollVideos('right')}
+            >
+              <Icon name="ChevronRight" size={24} />
             </Button>
           </div>
         </div>
