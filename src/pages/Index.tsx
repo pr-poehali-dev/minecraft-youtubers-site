@@ -304,9 +304,7 @@ const Index = () => {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold mb-2">Вступи в Discord</h3>
-                    <p className="text-muted-foreground mb-4">
-                      Присоединяйся к нашему Discord-серверу для общения с комьюнити
-                    </p>
+                    <p className="text-muted-foreground mb-4">Присоединись к нашему Discord серверу</p>
                     <Button 
                       className="bg-[#5865F2] hover:bg-[#4752C4]"
                       onClick={() => window.open("https://discord.gg", "_blank")}
@@ -358,10 +356,7 @@ const Index = () => {
                   <h3 className="text-xl font-bold">Требования</h3>
                 </div>
                 <ul className="space-y-2 text-muted-foreground">
-                  <li className="flex items-center gap-2">
-                    <Icon name="Check" className="text-primary" size={16} />
-                    Активный YouTube или Twitch канал (от 10K подписчиков)
-                  </li>
+                  <li className="flex items-center gap-2"></li>
                   <li className="flex items-center gap-2">
                     <Icon name="Check" className="text-primary" size={16} />
                     Регулярный выпуск контента по Minecraft
