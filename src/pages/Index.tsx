@@ -179,29 +179,11 @@ const Index = () => {
               </Button>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12">
-              <Card className="bg-card/50 border-border">
-                <CardContent className="pt-6 text-center">
-                  <div className="text-3xl font-bold text-primary">24/7</div>
-                  <div className="text-sm text-muted-foreground mt-1">Работа сервера</div>
-                </CardContent>
-              </Card>
-              <Card className="bg-card/50 border-border">
+            <div className="flex justify-center pt-12">
+              <Card className="bg-card/50 border-border w-64">
                 <CardContent className="pt-6 text-center">
                   <div className="text-3xl font-bold text-primary">50+</div>
                   <div className="text-sm text-muted-foreground mt-1">Участников</div>
-                </CardContent>
-              </Card>
-              <Card className="bg-card/50 border-border">
-                <CardContent className="pt-6 text-center">
-                  <div className="text-3xl font-bold text-primary">1.20</div>
-                  <div className="text-sm text-muted-foreground mt-1">Версия игры</div>
-                </CardContent>
-              </Card>
-              <Card className="bg-card/50 border-border">
-                <CardContent className="pt-6 text-center">
-                  <div className="text-3xl font-bold text-primary">15ms</div>
-                  <div className="text-sm text-muted-foreground mt-1">Пинг</div>
                 </CardContent>
               </Card>
             </div>
